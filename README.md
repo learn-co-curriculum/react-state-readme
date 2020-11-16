@@ -147,9 +147,7 @@ class App extends Component {
 }
 ```
 
-<p align="center">
-  <img src="https://curriculum-content.s3.amazonaws.com/react/asynchronous-state-setting-example.gif"/>
-</p>
+![state example](https://curriculum-content.s3.amazonaws.com/react/asynchronous-state-setting-example.gif)
 
 What we are seeing is `setState()` functioning _asynchronously_. When we execute
 `setState()`, it is _non-blocking_. It fires off a message to the React
@@ -182,5 +180,3 @@ values that are expected to change during the components life.
 ## Resources
 - [Official React docs on state](https://facebook.github.io/react/docs/interactivity-and-dynamic-uis.html#components-are-just-state-machines)
 - [Props vs. state](https://github.com/uberVU/react-guide/blob/master/props-vs-state.md)
-
-<p class='util--hide'>View <a href='https://learn.co/lessons/react-initial-state'>Initial State</a> on Learn.co and start learning to code for free.</p>
