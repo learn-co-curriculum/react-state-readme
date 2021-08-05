@@ -4,13 +4,11 @@
 
 In this lesson, we'll dive into component **state**.
 
-
 ## Objectives
 
 1. Explain what state is
 2. Explain the difference between state and props
 3. Show examples of how state is defined and updated
-
 
 ## What's state?
 
@@ -20,7 +18,7 @@ during the component's life.
 
 Consider the limitations of props: for a component's props to change, its
 _parent_ component needs to send it new props (after which, the component would
-'remake' itself with the new props). State provides us with a way to maintain and update information *within* a component _without_ requiring its parent to somehow
+'remake' itself with the new props). State provides us with a way to maintain and update information _within_ a component _without_ requiring its parent to somehow
 send updated information.
 
 Imagine that we have a single component which displays an integer. When a user
@@ -28,31 +26,26 @@ clicks the component, it should increment its integer by 1. If we were to
 represent this integer value in the component using **state**, the component
 could increment itself without needing any fussy prop passing:
 
-```js
+```jsx
 class MyComp extends React.Component {
- 
   // we use the constructor to set the INITIAL STATE
   constructor() {
-    super()
+    super();
     this.state = {
-      count: 0
-    }
+      count: 0,
+    };
   }
 
   // our increment method makes use of the 'setState' method, which is what we use to alter state
   increment = () => {
-    const newCount = this.state.count + 1
+    const newCount = this.state.count + 1;
     this.setState({
-      count: newCount
-    })
-  }
+      count: newCount,
+    });
+  };
 
   render() {
-    return (
-      <div onClick={this.increment}>
-        {this.state.count}
-      </div>
-    )
+    return <div onClick={this.increment}>{this.state.count}</div>;
   }
 }
 ```
@@ -76,14 +69,13 @@ does is:
 2. the function `this.increment` will be invoked,
 3. thereby updating the state of `MyComp` using `this.setState()`.
 
-Note: You may have noticed that `increment` is written as an instance method and 
-as an arrow function. We write it as an **arrow function** to bind the value of `this` 
-to be our instance of `MyComp`. Then, when we say `this.setState()`, we are really 
-just saying to set the state of `MyComp`. 
+Note: You may have noticed that `increment` is written as an instance method and
+as an arrow function. We write it as an **arrow function** to bind the value of `this`
+to be our instance of `MyComp`. Then, when we say `this.setState()`, we are really
+just saying to set the state of `MyComp`.
 
 Take your time to read through the above code. Work through it line by line and
 make sure you are comfortable before moving forward.
-
 
 ## Initial State and 'setState()'
 
@@ -117,32 +109,27 @@ In order to understand why this is important, let's look at an example of
 `setState()` being used in a component. The following gif is of this component
 (pay close attention to the `console.log()`s:
 
-```js
+```jsx
 class App extends Component {
-
   constructor() {
-    super()
+    super();
     this.state = {
-      count: 0
-    }
+      count: 0,
+    };
   }
 
   increment = () => {
-    console.log(`before setState: ${this.state.count}`)
+    console.log(`before setState: ${this.state.count}`);
 
     this.setState({
-      count: this.state.count + 1
-    })
+      count: this.state.count + 1,
+    });
 
-    console.log(`after setState: ${this.state.count}`)
-  }
+    console.log(`after setState: ${this.state.count}`);
+  };
 
   render() {
-    return (
-      <div onClick={this.increment}>
-        {this.state.count}
-      </div>
-    )
+    return <div onClick={this.increment}>{this.state.count}</div>;
   }
 }
 ```
@@ -160,7 +147,6 @@ It's not uncommon for new React developers to get 'bitten' by the asynchronous
 nature of `setState()` at least once. If `setState()` were not _asynchronous_,
 the two logs would not be the same number.
 
-
 ## A Word of Caution
 
 While component state is a very powerful feature, it should be used as sparingly
@@ -168,7 +154,6 @@ as possible. State adds (sometimes unnecessary) complexity and can be very easy
 to lose track of. The more state we introduce in our application, the harder it
 will be to keep track of all of the changes in our data. Remember: state is for
 values that are expected to change during the components life.
-
 
 ## Conclusion
 
@@ -178,5 +163,6 @@ values that are expected to change during the components life.
 - `setState()` is _asynchronous_
 
 ## Resources
+
 - [Official React docs on state](https://facebook.github.io/react/docs/interactivity-and-dynamic-uis.html#components-are-just-state-machines)
 - [Props vs. state](https://github.com/uberVU/react-guide/blob/master/props-vs-state.md)
